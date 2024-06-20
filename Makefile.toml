@@ -94,7 +94,6 @@ description = "Run documentation tests"
 command = "cargo"
 args = ["test", "--doc"]
 
-
 [tasks.install-cliff]
 description = "Install git-cliff"
 install_crate = { crate_name = "git-cliff", binary = "git-cliff", test_arg = "--help" }
@@ -103,3 +102,9 @@ install_crate = { crate_name = "git-cliff", binary = "git-cliff", test_arg = "--
 description = "Generate changelog"
 command = "git"
 args = ["cliff", "-o", "CHANGELOG.md"]
+
+[tasks.protos]
+description = "Rebuild protos"
+env = { "BUILD_PROTO" = "1" }
+command = "cargo"
+args = ["build"]

@@ -12,6 +12,24 @@ exclude = [
 ]
 
 [dependencies]
+prost = "0.12"
+prost-helper = "0.8"
+prost-types = "0.12"
+tonic = {"version" = "0.11.0",features = ["codegen","prost"]}
+tokio = { version = "1.37", features = ["full"] }
+thiserror = "1"
+anyhow = "1"
+dotenvy = "0.15"
+rumqttc = "0.24.0"
+log = "0.4"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["json","fmt","env-filter","std","registry"] }
+tracing-appender = "0.2"
+tracing-error = "0.2.0"
+
+[build-dependencies]
+prost-serde = "0.3"
+tonic-build = { version = "0.11", features = ["prost"] }
 
 [lints.rust]
 unsafe_code = "forbid"
