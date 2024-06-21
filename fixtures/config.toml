@@ -1,0 +1,21 @@
+[mqtt]
+host = "0.0.0.0"
+port = 1883
+keepalive = 5
+client_id = "miner"
+username = "emqx_routine_1"
+password = "FVxHxYHxXnNd4ZM8"
+
+[[mqtt.topics]]
+topics = "$share/routine//client/+/property/upload"
+qos = 1
+[[mqtt.topics]]
+topics = "$share/routine//client/+/heartbeat"
+qos = 1
+[[mqtt.topics]]
+topics = "$share/routine//client/+/work/status/upload"
+qos = 1
+[[mqtt.topics]]
+topics = "$SYS/brokers/+/clients/#"
+qos = 1
+
