@@ -29,7 +29,6 @@ pub struct TopicConfig {
     pub qos: u8,
 }
 
-
 /// Initializes the application's configuration from the provided file.
 /// Expected to be run on startup of the application.
 pub fn init(cfg_file: &String) {
@@ -69,4 +68,3 @@ pub fn config() -> &'static AppConfig {
         panic!("💥 Configuration accessed before initialization");
     })
 }
-
