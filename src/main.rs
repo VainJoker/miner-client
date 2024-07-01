@@ -2,6 +2,7 @@ use miner_client::{
     cfg,
     cmd::Cli,
     mqtt::{self, Options},
+    req::abi,
     req::api,
     tp::read_file,
 };
@@ -16,12 +17,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mac = root.sign.mac.clone();
 
     let res = api::call(root.sign).await;
+    //let res = abi::call(root.sign).await;
 
     mqtt::mqtt(
         Options {
             mac,
             host: res.ms,
-            port: res.mpt,
+            port: res.mpt as u16,
             mu: res.mu,
             mp: res.mp,
         },

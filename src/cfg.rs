@@ -10,6 +10,13 @@ static CFG: OnceLock<AppConfig> = OnceLock::new();
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AppConfig {
     pub mqtt: MqttConfig,
+    pub sign: SignConfig,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
+pub struct SignConfig {
+    pub host: String,
+    pub port: u16,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, Default)]

@@ -1,27 +1,29 @@
 use serde::{Deserialize, Serialize};
 
+use crate::pb::miner_sign::SignRequest;
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Root {
-    pub sign: Sign,
+    pub sign: SignRequest,
     pub mode: usize,
     pub status: Status,
 }
 
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Sign {
-    pub mac: String,
-    pub ip: String,
-    pub devtype: String,
-    pub key: String,
-    pub t: i64,
-    pub c: String,
-    pub hv: String,
-    pub sv: String,
-    pub capability: Capability,
-    pub candy: Vec<i64>,
-}
+// #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+// #[serde(rename_all = "camelCase")]
+// pub struct Sign {
+//     pub mac: String,
+//     pub ip: String,
+//     pub devtype: String,
+//     pub key: String,
+//     pub t: u64,
+//     pub c: String,
+//     pub hv: String,
+//     pub sv: String,
+//     pub capability: Capability,
+//     pub candy: Vec<u32>,
+// }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -48,19 +50,6 @@ pub struct Pool {
     pub pool_priority: i64,
     pub pass: String,
 }
-
-// #[derive(Serialize, Deserialize, Debug, Clone)]
-// pub struct Pool {
-//     url: String,
-//     user: String,
-//     legal: bool,
-//     active: bool,
-//     #[serde(rename = "dragid")]
-//     drag_id: i32,
-//     #[serde(rename = "pool-priority")]
-//     pool_priority: i32,
-//     pass: String,
-// }
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(untagged)]
@@ -122,16 +111,6 @@ pub struct MessageStatus {
     pub ip: String,
     pub key: String,
     pub coin: String,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct SignResponse {
-    pub result: i32,
-    pub ms: String,
-    pub mpt: u16,
-    pub mu: String,
-    pub mp: String,
-    pub t: u64,
 }
 
 impl From<Status> for MessageStatus {

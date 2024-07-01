@@ -13,6 +13,12 @@ fn main() {
     // build_with_serde(include_str!("build_opts.json"));
     tonic_build::configure()
         .out_dir("src/pb") // 设置生成代码的自定义目录
+        .type_attribute(".", "#[derive(serde::Serialize, serde::Deserialize)]")
+        // .type_attribute("miner_sign.sign_request.Capability",
+        // "#[derive(serde::Serialize, serde::Deserialize)]")
+        // .type_attribute("miner_sign.SignRequest", "#[derive(serde::Serialize,
+        // serde::Deserialize)]") .type_attribute("miner_sign.
+        // SignResponse", "#[derive(serde::Deserialize, serde::Serialize)]")
         .compile(
             &["miner_sign.proto"], // 指定.proto文件的位置
             &["./protobuf"],       // 指定.proto文件的搜索目录

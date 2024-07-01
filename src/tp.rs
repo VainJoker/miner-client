@@ -16,7 +16,7 @@ mod tests {
 
     #[tokio::test]
     async fn test_read_file() {
-        let res = read_file(PathBuf::from(
+        read_file(PathBuf::from(
             "/home/vainjoker/Codes/minerhub/miner-client/fixtures/status.json",
         ));
     }
